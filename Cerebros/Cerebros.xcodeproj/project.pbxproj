@@ -12,6 +12,11 @@
 		5404926F1DD37D6200ADF662 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5404926D1DD37D6200ADF662 /* Main.storyboard */; };
 		540492711DD37D6200ADF662 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 540492701DD37D6200ADF662 /* Assets.xcassets */; };
 		540492741DD37D6200ADF662 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 540492721DD37D6200ADF662 /* LaunchScreen.storyboard */; };
+		540492811DD37E4C00ADF662 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540492801DD37E4C00ADF662 /* CoreDataStack.swift */; };
+		540492841DD37E8500ADF662 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 540492821DD37E8500ADF662 /* Model.xcdatamodeld */; };
+		540492871DD3874D00ADF662 /* MarvelClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540492861DD3874D00ADF662 /* MarvelClient.swift */; };
+		540492891DD3875700ADF662 /* MarvelConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540492881DD3875700ADF662 /* MarvelConstants.swift */; };
+		5404928B1DD3876000ADF662 /* MarvelConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5404928A1DD3876000ADF662 /* MarvelConvenience.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +27,11 @@
 		540492701DD37D6200ADF662 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		540492731DD37D6200ADF662 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		540492751DD37D6200ADF662 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		540492801DD37E4C00ADF662 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		540492831DD37E8500ADF662 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		540492861DD3874D00ADF662 /* MarvelClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelClient.swift; sourceTree = "<group>"; };
+		540492881DD3875700ADF662 /* MarvelConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelConstants.swift; sourceTree = "<group>"; };
+		5404928A1DD3876000ADF662 /* MarvelConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelConvenience.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +64,67 @@
 		540492681DD37D6200ADF662 /* Cerebros */ = {
 			isa = PBXGroup;
 			children = (
-				540492691DD37D6200ADF662 /* AppDelegate.swift */,
-				5404926B1DD37D6200ADF662 /* ViewController.swift */,
-				5404926D1DD37D6200ADF662 /* Main.storyboard */,
-				540492701DD37D6200ADF662 /* Assets.xcassets */,
-				540492721DD37D6200ADF662 /* LaunchScreen.storyboard */,
-				540492751DD37D6200ADF662 /* Info.plist */,
+				5404927F1DD37DF600ADF662 /* Assets */,
+				5404927B1DD37DC900ADF662 /* Model */,
+				5404927C1DD37DCE00ADF662 /* View */,
+				5404927D1DD37DD200ADF662 /* Control */,
+				5404927E1DD37DEC00ADF662 /* Supporting Files */,
 			);
 			path = Cerebros;
+			sourceTree = "<group>";
+		};
+		5404927B1DD37DC900ADF662 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				540492851DD3865F00ADF662 /* MarvelClient */,
+				540492801DD37E4C00ADF662 /* CoreDataStack.swift */,
+				540492821DD37E8500ADF662 /* Model.xcdatamodeld */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		5404927C1DD37DCE00ADF662 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		5404927D1DD37DD200ADF662 /* Control */ = {
+			isa = PBXGroup;
+			children = (
+				5404926B1DD37D6200ADF662 /* ViewController.swift */,
+			);
+			name = Control;
+			sourceTree = "<group>";
+		};
+		5404927E1DD37DEC00ADF662 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				540492691DD37D6200ADF662 /* AppDelegate.swift */,
+				540492751DD37D6200ADF662 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5404927F1DD37DF600ADF662 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				5404926D1DD37D6200ADF662 /* Main.storyboard */,
+				540492721DD37D6200ADF662 /* LaunchScreen.storyboard */,
+				540492701DD37D6200ADF662 /* Assets.xcassets */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		540492851DD3865F00ADF662 /* MarvelClient */ = {
+			isa = PBXGroup;
+			children = (
+				540492861DD3874D00ADF662 /* MarvelClient.swift */,
+				5404928A1DD3876000ADF662 /* MarvelConvenience.swift */,
+				540492881DD3875700ADF662 /* MarvelConstants.swift */,
+			);
+			name = MarvelClient;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +200,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				540492811DD37E4C00ADF662 /* CoreDataStack.swift in Sources */,
 				5404926C1DD37D6200ADF662 /* ViewController.swift in Sources */,
+				540492891DD3875700ADF662 /* MarvelConstants.swift in Sources */,
 				5404926A1DD37D6200ADF662 /* AppDelegate.swift in Sources */,
+				540492871DD3874D00ADF662 /* MarvelClient.swift in Sources */,
+				5404928B1DD3876000ADF662 /* MarvelConvenience.swift in Sources */,
+				540492841DD37E8500ADF662 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +370,19 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		540492821DD37E8500ADF662 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				540492831DD37E8500ADF662 /* Model.xcdatamodel */,
+			);
+			currentVersion = 540492831DD37E8500ADF662 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5404925E1DD37D6100ADF662 /* Project object */;
 }
