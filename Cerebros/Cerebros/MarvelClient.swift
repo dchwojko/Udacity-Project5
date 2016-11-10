@@ -21,7 +21,7 @@ class MarvelClient {
         newParameters["ts"] = ts as AnyObject?
         
         let url: URL = URL(string: urlString + escapedParameters(parameters: newParameters))!
-        print("DEBUG: \(url)")
+        //print("DEBUG: \(url)")
         
         let request = NSMutableURLRequest(url: url )
         request.httpMethod = "GET"

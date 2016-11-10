@@ -32,6 +32,7 @@
 		540492861DD3874D00ADF662 /* MarvelClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelClient.swift; sourceTree = "<group>"; };
 		540492881DD3875700ADF662 /* MarvelConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelConstants.swift; sourceTree = "<group>"; };
 		5404928A1DD3876000ADF662 /* MarvelConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelConvenience.swift; sourceTree = "<group>"; };
+		54B87F0C1DD3A22300C11A4E /* Cerebros-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cerebros-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +102,7 @@
 		5404927E1DD37DEC00ADF662 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				54B87F0C1DD3A22300C11A4E /* Cerebros-Bridging-Header.h */,
 				540492691DD37D6200ADF662 /* AppDelegate.swift */,
 				540492751DD37D6200ADF662 /* Info.plist */,
 			);
@@ -332,6 +334,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chwojko.Cerebros;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "Cerebros/Cerebros-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -345,6 +348,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chwojko.Cerebros;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "Cerebros/Cerebros-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -368,6 +372,7 @@
 				5404927A1DD37D6200ADF662 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

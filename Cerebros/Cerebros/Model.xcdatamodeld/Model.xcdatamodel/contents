@@ -2,13 +2,13 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11542" systemVersion="16B2555" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="ComicBook" representedClassName="ComicBook" syncable="YES" codeGenerationType="class">
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="comicCharacters" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ComicCharacter" inverseName="comicBooks" inverseEntity="ComicCharacter" syncable="YES"/>
     </entity>
     <entity name="ComicCharacter" representedClassName="ComicCharacter" syncable="YES" codeGenerationType="class">
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="comicBooks" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ComicBook" inverseName="comicCharacters" inverseEntity="ComicBook" syncable="YES"/>
     </entity>
