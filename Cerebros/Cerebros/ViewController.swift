@@ -71,11 +71,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             getMarvelCharacters()
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func getMarvelCharacters() {
         
@@ -83,15 +78,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let parameters: [String:AnyObject] = [
             "orderBy" : "name" as AnyObject,
-            "limit" : "1" as AnyObject
+            "limit" : "100" as AnyObject
         ]
         // while (remainingCharacters > 0) {}
         self.getCharacterCount() { count in
             characterCount = count
         
             for offset in stride(from: 0, through: characterCount, by: 100) {
-                self.getCharactersAtOffset(offset: offset) { characters in
-//                  // TO DO
+                print(offset)
+                self.getCharactersAtOffset(offset: offset) { characterSet in
+                    for character in characterSet {
+                        self.characters.append(character)
+                        self.updateTable()
+                    }
                 }
             }
         }
@@ -121,7 +120,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
 
-    func getCharactersAtOffset(offset: Int, completionHandler: (_ characters: [ComicCharacter]) -> Void) -> Void {
+    func getCharactersAtOffset(offset: Int, completionHandler: @escaping (_ characters: [ComicCharacter]) -> Void) -> Void {
         let parameters: [String:AnyObject] = [
             "orderBy" : "name" as AnyObject,
             "limit" : "100" as AnyObject,
@@ -131,14 +130,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             guard error == nil else {
                 fatalError()
             }
+            
+            var characterSet = [ComicCharacter]()
 //            print(result!)
             if let result = result {
                 if let data: [String:AnyObject] = result["data"] as! [String:AnyObject] {
                     if let results: [[String:AnyObject]] = data["results"] as! [[String:AnyObject]] {
                         for arrayItem in results {
-                            var thumbnailString: String
+                            print("DEBUG: results size: \(results.count)")
+                            print("DEBUG: characterSet size: \(characterSet.count)")
+                            var thumbnailString: String = ""
                             if let thumbnail: [String:String] = arrayItem["thumbnail"] as! [String:String] {
-                                thumbnailString = "\(thumbnail["path"]).\(thumbnail["extension"])"
+                                let tempThumbnailString = "\(thumbnail["path"]!).\(thumbnail["extension"]!)"
+                                
+                                // Repalce 'http:' with 'https:'
+                                thumbnailString = tempThumbnailString.replacingOccurrences(of: "http:", with: "https:", options: .literal, range: nil)
+                                
                                 print(thumbnailString)
                             }
                             if let name: String = arrayItem["name"] as! String, let id: Int64 = arrayItem["id"] as! Int64 {
@@ -148,31 +155,53 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                                     let comicCharacter = NSManagedObject(entity: entity!, insertInto: self.stack.mainContext) as! ComicCharacter
                                     comicCharacter.name = name
                                     comicCharacter.identifier = id
-                                    self.characters.append(comicCharacter)
+                                    comicCharacter.thumbnailPath = thumbnailString
+                                    characterSet.append(comicCharacter)
                                 }
-                                self.updateTable()
-                                
                             }
                         }
+                        completionHandler(characterSet)
+                        return
                     }
                 }
                 
             }
+            completionHandler(characterSet)
+            return
         }
     }
     
+    func getCharacterPhoto(character: ComicCharacter, completionHandler: @escaping (_ imageData: NSData?, _ error: NSError?) -> Void) {
+        print("DEBUG: \(character.name!) : \(character.identifier) : \(character.thumbnailPath!)")
+//        let parameters : [String:AnyObject] = [:]
+        MarvelClient.sharedInstance().taskForGETMethod(urlString: character.thumbnailPath!, parameters: [:]) { (data, error) in
+            guard error == nil else {
+                print("There was an error: \(error)")
+                completionHandler(nil, error)
+                return
+            }
+            
+            completionHandler(data as! NSData?, nil)
+        }
+
+    }
+    
     func updateTable() {
+        performUIUpdatesOnMain {
+            self.characters.sort() { $0.name! < $1.name! }
+            self.tableView.reloadData()
+        }
+    }
+    
+    func performUIUpdatesOnMain(updates: @escaping () -> Void) {
         let queue = DispatchQueue(label: "myQueue")
         queue.async {
             // placeholder
             DispatchQueue.main.async {
-                self.characters.sort() { $0.name! < $1.name! }
-                self.tableView.reloadData()
+                updates()
             }
         }
-        
     }
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return characters.count
@@ -182,8 +211,40 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as UITableViewCell
         cell.textLabel?.text = characters[indexPath.row].name
         cell.detailTextLabel?.text = "\(characters[indexPath.row].identifier)"
-        cell.imageView?.image = nil
+        
+        if characters[indexPath.row].thumbnail == nil {
+            MarvelClient.sharedInstance().getCharacterPhoto(character: characters[indexPath.row])  { (imageData, error) in
+                guard error == nil else {
+                    self.performUIUpdatesOnMain {
+                        cell.imageView?.image = UIImage(named: "CharacterPlaceholderImage")
+                    }
+                    
+                    return
+                }
+                
+                self.performUIUpdatesOnMain {
+                    cell.imageView?.image = UIImage(data: imageData as! Data)
+                }
+                
+                return
+            }
+
+        } else {
+            self.performUIUpdatesOnMain {
+                cell.imageView?.image = UIImage(data: self.characters[indexPath.row].thumbnail as! Data)
+            }
+            
+        }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "characterDetailViewController") as! CharacterDetailViewController
+        let selectedCharacter: ComicCharacter = characters[indexPath.row]
+        print(selectedCharacter.name)
+        controller.selectedCharacter = selectedCharacter
+        navigationController?.pushViewController(controller, animated: true)
+        
     }
 
 }

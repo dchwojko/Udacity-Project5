@@ -122,5 +122,45 @@ class MarvelClient {
         }
     }
     
+    func getCharacterPhoto(character: ComicCharacter, completionHandler: @escaping (_ imageData: NSData?, _ error: NSError?) -> Void) {
+        
+        let parameters: [String:AnyObject] = [:]
+        
+        let url = NSURL(string: character.thumbnailPath!)
+        
+        let request = NSMutableURLRequest(url: url as! URL)
+        request.httpMethod = "GET"
+        let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
+            // helper function
+            func sendError(error: String) {
+                let userInfo = [NSLocalizedDescriptionKey : error]
+                completionHandler(nil, NSError(domain: "taskForGETMethod", code: 1, userInfo: userInfo))
+            }
+            
+            /* GUARD: Was there an error? */
+            guard error == nil else {
+                sendError(error: "There was an error with your request: \(error)")
+                return
+            }
+            
+            /* GUARD: Did we get a successful 2xx response? */
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode , statusCode >= 200 && statusCode <= 299 else {
+                sendError(error: "Your request returned a status code other than 2xx!")
+                return
+            }
+            
+            /* GUARD: Was there any data returned? */
+            guard let data = data else {
+                sendError(error: "No data was returned by the request!")
+                return
+            }
+            
+            completionHandler(data as NSData, nil)
+            return
+        }
+        task.resume()
+        
+    }
+    
 }
 

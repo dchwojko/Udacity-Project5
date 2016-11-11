@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="91W-N1-xaH">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Cerebro-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Cerebros" customModuleProvider="target" sceneMemberID="viewController">
@@ -64,11 +64,62 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FDf-Jc-wdM" secondAttribute="bottom" id="nyh-Xd-0PT"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Cerebro" id="fyJ-5j-Mwy"/>
                     <connections>
                         <outlet property="tableView" destination="FDf-Jc-wdM" id="uac-zj-SdK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1076" y="133.5832083958021"/>
+        </scene>
+        <!--Character Detail View Controller-->
+        <scene sceneID="hQd-AB-FXR">
+            <objects>
+                <viewController storyboardIdentifier="characterDetailViewController" id="IZf-vk-2So" customClass="CharacterDetailViewController" customModule="Cerebros" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ux3-an-fdV"/>
+                        <viewControllerLayoutGuide type="bottom" id="d8b-fa-zXb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DOb-N2-d82">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3vF-1r-waR">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3vF-1r-waR" firstAttribute="top" secondItem="DOb-N2-d82" secondAttribute="top" id="bAP-Xa-iqc"/>
+                            <constraint firstItem="d8b-fa-zXb" firstAttribute="top" secondItem="3vF-1r-waR" secondAttribute="bottom" id="gOc-qY-800"/>
+                            <constraint firstItem="3vF-1r-waR" firstAttribute="leading" secondItem="DOb-N2-d82" secondAttribute="leading" id="l5K-h8-r57"/>
+                            <constraint firstAttribute="trailing" secondItem="3vF-1r-waR" secondAttribute="trailing" id="z9J-pT-vCp"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="3vF-1r-waR" id="Zup-ns-EDR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="87b-eI-Hag" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1800.8" y="133.5832083958021"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MHN-3I-818">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="91W-N1-xaH" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eHu-hR-uA2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="PFs-H5-ua7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uB9-Uh-AqC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>

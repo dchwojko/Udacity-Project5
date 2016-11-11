@@ -17,6 +17,7 @@
 		540492871DD3874D00ADF662 /* MarvelClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540492861DD3874D00ADF662 /* MarvelClient.swift */; };
 		540492891DD3875700ADF662 /* MarvelConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540492881DD3875700ADF662 /* MarvelConstants.swift */; };
 		5404928B1DD3876000ADF662 /* MarvelConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5404928A1DD3876000ADF662 /* MarvelConvenience.swift */; };
+		54E065D41DD5FA1000B01477 /* CharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E065D31DD5FA1000B01477 /* CharacterDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		540492881DD3875700ADF662 /* MarvelConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelConstants.swift; sourceTree = "<group>"; };
 		5404928A1DD3876000ADF662 /* MarvelConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelConvenience.swift; sourceTree = "<group>"; };
 		54B87F0C1DD3A22300C11A4E /* Cerebros-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cerebros-Bridging-Header.h"; sourceTree = "<group>"; };
+		54E065D31DD5FA1000B01477 /* CharacterDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 		5404927D1DD37DD200ADF662 /* Control */ = {
 			isa = PBXGroup;
 			children = (
+				54E065D31DD5FA1000B01477 /* CharacterDetailViewController.swift */,
 				5404926B1DD37D6200ADF662 /* ViewController.swift */,
 			);
 			name = Control;
@@ -207,6 +210,7 @@
 				540492891DD3875700ADF662 /* MarvelConstants.swift in Sources */,
 				5404926A1DD37D6200ADF662 /* AppDelegate.swift in Sources */,
 				540492871DD3874D00ADF662 /* MarvelClient.swift in Sources */,
+				54E065D41DD5FA1000B01477 /* CharacterDetailViewController.swift in Sources */,
 				5404928B1DD3876000ADF662 /* MarvelConvenience.swift in Sources */,
 				540492841DD37E8500ADF662 /* Model.xcdatamodeld in Sources */,
 			);

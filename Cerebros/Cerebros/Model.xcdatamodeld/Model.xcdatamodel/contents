@@ -10,10 +10,12 @@
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="identifier" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thumbnail" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="thumbnailPath" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="comicBooks" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ComicBook" inverseName="comicCharacters" inverseEntity="ComicBook" syncable="YES"/>
     </entity>
     <elements>
         <element name="ComicBook" positionX="-63" positionY="-18" width="128" height="105"/>
-        <element name="ComicCharacter" positionX="-54" positionY="-9" width="128" height="105"/>
+        <element name="ComicCharacter" positionX="-54" positionY="-9" width="128" height="135"/>
     </elements>
 </model>
